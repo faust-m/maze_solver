@@ -1,4 +1,22 @@
-from line import Line, Point
+class Point:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
+class Line:
+    def __init__(self, start_point, end_point):
+        self.start = start_point
+        self.end = end_point
+
+    def draw(self, canvas, fill_color):
+        canvas.create_line(
+            self.start.x, self.start.y,
+            self.end.x, self.end.y,
+            fill=fill_color,
+            width=2
+        )
+
 
 class Cell:
     def __init__(
@@ -61,7 +79,8 @@ class Cell:
 
     def draw_move(self, to_cell, undo=False):
         if undo:
-            self.__win.draw_line(Line(self.center, to_cell.center), "gray")
+            color = "gray"
         else:
-            self.__win.draw_line(Line(self.center, to_cell.center), "red")
-
+            color = "red"
+        line = Line(self.center, to_cell.center)
+        self.__win.draw_line(line, color)
