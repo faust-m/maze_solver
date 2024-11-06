@@ -9,7 +9,7 @@ class Line:
         self.start = start_point
         self.end = end_point
 
-    def draw(self, canvas, fill_color):
+    def draw(self, canvas, fill_color="black"):
         canvas.create_line(
             self.start.x, self.start.y,
             self.end.x, self.end.y,
